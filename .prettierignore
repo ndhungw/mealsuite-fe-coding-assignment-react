@@ -1,0 +1,12 @@
+# Config
+.github
+.husky
+.vscode
+
+# Dependencies
+node_modules
+dist
+
+yarn.lock
+*.json
+*.md

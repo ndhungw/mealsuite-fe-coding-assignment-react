@@ -39,15 +39,9 @@ export class TicketsController {
 
   @Put(':ticketId/assign/:userId')
   @HttpCode(204)
-  async assignTicket(
-    @Param('ticketId') ticketId: string,
-    @Param('userId') userId: string
-  ) {
+  async assignTicket(@Param('ticketId') ticketId: string, @Param('userId') userId: string) {
     await randomDelay();
-    const success = await this.ticketsService.assign(
-      Number(ticketId),
-      Number(userId)
-    );
+    const success = await this.ticketsService.assign(Number(ticketId), Number(userId));
     if (!success) throw new UnprocessableEntityException();
   }
 

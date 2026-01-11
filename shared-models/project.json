@@ -6,25 +6,19 @@
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "shared-models/**/*.ts"
-        ]
+        "lintFilePatterns": ["shared-models/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/shared-models"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/shared-models"],
       "options": {
         "jestConfig": "shared-models/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": []
+  "tags": ["type:lib"]
 }
