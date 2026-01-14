@@ -20,9 +20,117 @@ export class TicketsService {
       assigneeId: 1,
       completed: false,
     },
+    {
+      id: 3,
+      description: 'Set up dual monitors',
+      assigneeId: 2,
+      completed: false,
+    },
+    {
+      id: 4,
+      description: 'Configure keyboard shortcuts',
+      assigneeId: null,
+      completed: false,
+    },
+    {
+      id: 5,
+      description: 'Install standing desk converter',
+      assigneeId: 1,
+      completed: true,
+    },
+    {
+      id: 6,
+      description: 'Replace office chair wheels',
+      assigneeId: 2,
+      completed: false,
+    },
+    {
+      id: 7,
+      description: 'Mount whiteboard on wall',
+      assigneeId: null,
+      completed: false,
+    },
+    {
+      id: 8,
+      description: 'Organize cable management',
+      assigneeId: 1,
+      completed: true,
+    },
+    {
+      id: 9,
+      description: 'Add task lighting to desk',
+      assigneeId: 2,
+      completed: false,
+    },
+    {
+      id: 10,
+      description: 'Install noise-canceling panels',
+      assigneeId: null,
+      completed: false,
+    },
+    {
+      id: 11,
+      description: 'Set up ergonomic mouse and pad',
+      assigneeId: 1,
+      completed: false,
+    },
+    {
+      id: 12,
+      description: 'Replace desk lamp bulb',
+      assigneeId: 2,
+      completed: true,
+    },
+    {
+      id: 13,
+      description: 'Install monitor privacy screen',
+      assigneeId: null,
+      completed: false,
+    },
+    {
+      id: 14,
+      description: 'Configure desk phone system',
+      assigneeId: 1,
+      completed: false,
+    },
+    {
+      id: 15,
+      description: 'Add plants to workspace',
+      assigneeId: 2,
+      completed: false,
+    },
+    {
+      id: 16,
+      description: 'Install under-desk power strip',
+      assigneeId: null,
+      completed: true,
+    },
+    {
+      id: 17,
+      description: 'Set up document organizer',
+      assigneeId: 1,
+      completed: false,
+    },
+    {
+      id: 18,
+      description: 'Replace office chair cushion',
+      assigneeId: 2,
+      completed: false,
+    },
+    {
+      id: 19,
+      description: 'Mount wall calendar',
+      assigneeId: null,
+      completed: false,
+    },
+    {
+      id: 20,
+      description: 'Install desk drawer organizers',
+      assigneeId: 1,
+      completed: true,
+    },
   ];
 
-  private nextId = 3;
+  private nextId = this.storedTickets[this.storedTickets.length - 1].id + 1;
 
   constructor(private usersService: UsersService) {}
 

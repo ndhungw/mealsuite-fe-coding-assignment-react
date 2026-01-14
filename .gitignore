@@ -1,4 +1,10 @@
+.github
+.nxcache
+
 node_modules
 dist
-.nxcache
+
 yarn-error.log
+
+.env*
+!.env.example

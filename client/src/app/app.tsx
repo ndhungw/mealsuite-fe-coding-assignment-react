@@ -1,47 +1,53 @@
-import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { Ticket, User } from '@acme/shared-models';
+import { BrowserRouter, Link } from 'react-router-dom';
 
-import styles from './app.module.css';
-import Tickets from './tickets/tickets';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { AppRoutes } from './app-routes';
+import { ListTodo } from 'lucide-react';
 
 const App = () => {
-  const [tickets, setTickets] = useState([] as Ticket[]);
-  const [users, setUsers] = useState([] as User[]);
-
-  // Very basic way to synchronize state with server.
-  // Feel free to use any state/fetch library you want (e.g. react-query, xstate, redux, etc.).
-  useEffect(() => {
-    async function fetchTickets() {
-      const data = await fetch('/api/tickets').then();
-      setTickets(await data.json());
-    }
-
-    async function fetchUsers() {
-      const data = await fetch('/api/users').then();
-      setUsers(await data.json());
-    }
-
-    fetchTickets();
-    fetchUsers();
-  }, []);
-
   return (
-    <div className={styles['app']}>
-      <h1>Ticketing App</h1>
-      <Routes>
-        <Route
-          path='/'
-          element={<Tickets tickets={tickets} />}
-        />
-        {/* Hint: Try `npx nx g component TicketDetails --project=client --no-export` to generate this component  */}
-        <Route
-          path='/:id'
-          element={<h2>Details Not Implemented</h2>}
-        />
-      </Routes>
-    </div>
+    <BrowserRouter>
+      <AppShell>
+        <AppLayout>
+          <AppRoutes />
+        </AppLayout>
+      </AppShell>
+    </BrowserRouter>
   );
 };
+
+const queryClient = new QueryClient();
+
+function AppShell({ children }: { children: React.ReactNode }) {
+  return (
+    <QueryClientProvider client={queryClient}>
+      {children}
+      <ReactQueryDevtools initialIsOpen={true} />
+    </QueryClientProvider>
+  );
+}
+
+function AppLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <header className='bg-background shadow-2xs sticky top-0 z-50'>
+        <div className='container mx-auto p-4'>
+          <Link
+            to='/'
+            className='inline-flex items-center gap-2'
+          >
+            <ListTodo className='size-5 text-primary' />
+            <h1 className='text-lg font-bold text-primary text-shadow-accent'>TASKEE</h1>
+          </Link>
+        </div>
+      </header>
+      <main className='bg-gray-50 flex-1'>
+        <div className='container mx-auto p-4'>{children}</div>
+      </main>
+    </>
+  );
+}
 
 export default App;

@@ -5,19 +5,7 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {
-        "@nrwl/nx/enforce-module-boundaries": [
-          "error",
-          {
-            "depConstraints": [
-              {
-                "sourceTag": "type:app",
-                "onlyDependOnLibsWithTags": ["type:lib"]
-              }
-            ]
-          }
-        ]
-      }
+      "rules": {}
     },
     {
       "files": ["*.ts", "*.tsx"],

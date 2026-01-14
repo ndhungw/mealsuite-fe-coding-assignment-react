@@ -20,7 +20,8 @@
     "paths": {
       "@acme/shared-models": [
         "shared-models/src/index.ts"
-      ]
+      ],
+      "@/*": ["client/src/*"]
     }
   },
   "exclude": [
